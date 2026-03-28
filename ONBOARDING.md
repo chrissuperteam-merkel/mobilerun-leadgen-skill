@@ -1,246 +1,206 @@
-# OpenClaw Onboarding — Lead Generation Tutorial
+# OpenClaw Onboarding — Lern deinen Agent kennen
 
-⚠️ **FÜR DEN AGENT:** Das hier ist ein Tutorial. Schick dem User EINE Section nach der anderen. Warte nach jeder auf "ok" oder "weiter". NIEMALS alles auf einmal. Kurze Messages. Spielautomat-Style.
+⚠️ **FÜR DEN AGENT:** Eine Section nach der anderen. Warte nach jeder auf "ok". Kurze Messages.
 
 ---
 
-## Message 1: Intro
+## Message 1: Start
 
-Hey! Ich bring dir jetzt bei wie du mit mir (deinem Agent) arbeitest. Schritt für Schritt. Sag einfach "ok" und ich mach weiter.
+Yo. Ich zeig dir jetzt was du mit mir machen kannst. Nicht nur für den Mobilerun-Job — sondern auch für deine tägliche Arbeit.
 
-Wird ca. 10 Minuten dauern. Danach weißt du alles was du brauchst.
+Wir gehen das zusammen durch. Du lernst indem du es machst, nicht indem du liest.
 
-Ready?
+Sag "ok" und wir starten.
 
 ---
 
 ## Message 2: Was ich bin
 
-Ich bin dein AI Agent. Ich laufe auf OpenClaw — das ist quasi mein Betriebssystem.
+Ich bin ein AI Agent. Ich kann:
+- 🔍 Im Internet suchen und Websites lesen
+- 📝 Dateien schreiben (Listen, Reports, Tabellen)
+- 🤖 Mir selbst Helfer spawnen für schnellere Arbeit
+- ⏰ Aufgaben automatisch wiederholen (Cron Jobs)
+- 🧠 Mir Sachen merken wenn du sagst "speicher das"
 
-Stell dir vor: Ich bin ein Mitarbeiter der nie schläft, nie krank ist, und gleichzeitig 3 Sachen machen kann. Aber ich hab kein Langzeitgedächtnis — wenn du mir nicht sagst "merk dir das", vergess ich es nächste Session.
-
-ok?
-
----
-
-## Message 3: Was ich kann
-
-Meine Werkzeuge:
-
-🔍 **Suchen** — Ich google für dich und lese Websites
-📝 **Schreiben** — Ich erstelle Dateien, Listen, Reports
-🤖 **Helfer spawnen** — Ich kann mir selbst Assistenten erstellen die parallel arbeiten (heißen "Subagents")
-⏰ **Automatische Jobs** — Ich kann Aufgaben jeden Tag/jede Woche wiederholen (heißen "Cron Jobs")
-🧠 **Merken** — Wenn du sagst "speicher das", schreib ich es auf und weiß es nächstes Mal noch
-
-Das war's. Keine Magie. Aber damit kann man viel machen.
+Was ich NICHT kann:
+- Mich irgendwo einloggen (kein LinkedIn, kein Email)
+- Mich an letzte Session erinnern (außer du sagst "speicher das")
+- Immer richtige Infos geben — ich erfinde manchmal Sachen. Sag mir "nutze Web Search" dann passiert das nicht
 
 ok?
 
 ---
 
-## Message 4: Was ich NICHT kann
+## Message 3: Übung 1 — Dein erster Suchauftrag
 
-Ehrlich sein ist wichtig. Hier sind meine Schwächen:
+Lass uns direkt üben. Sag mir:
 
-❌ **Ich kann mich nicht einloggen** — Kein LinkedIn Login, kein Instagram, kein CRM. Ich sehe nur öffentliche Seiten.
+"Such mir 5 AI Startups die dieses Jahr bei Y Combinator waren"
 
-❌ **Ich vergesse alles** — Zwischen Sessions starte ich bei null. Wenn du sagst "das hab ich dir gestern gesagt" — sorry, weiß ich nicht mehr. Außer du hast gesagt "speicher das".
+Ich zeig dir was passiert. Danach erklär ich was ich gemacht hab.
 
-❌ **Ich halluziniere manchmal** — Ich erfinde Firmennamen, Websites oder Zahlen die nicht existieren. Besonders wenn ich aus dem Kopf antworte statt zu suchen. Sag mir IMMER: "Nutze Web Search, nichts aus dem Kopf."
+Probier's.
 
-❌ **Ich werde langsam bei langen Chats** — Nach 30+ Nachrichten vergesse ich den Anfang. Lösung: Wichtiges in Dateien speichern, nicht im Chat lassen.
+---
 
-❌ **Ich kann keine Emails schicken** — Ich kann Drafts schreiben, aber nicht selbst versenden.
+## Message 4: So findest du Leads — Schritt für Schritt
 
-❌ **Websites können mich blocken** — Manche Seiten (LinkedIn, Crunchbase) zeigen mir nicht alles weil sie merken dass ich ein Bot bin.
+Jetzt wird's konkret. So generierst du eine Lead-Liste:
 
-Wichtig zu wissen. Aber mit den richtigen Tricks kein Problem.
+**Schritt 1: Quelle wählen**
+Wo sitzen deine Zielkunden?
+
+Für uns (Mobilerun):
+- YC Company Directory: ycombinator.com/companies
+- a16z Portfolio: a16z.com/portfolio
+- Crunchbase: neue Funding-Runden
+- ProductHunt: neue Launches
+- GitHub Trending: Open Source Projekte
+
+Sag mir: "Geh auf ycombinator.com/companies, filter nach AI, und schreib mir die ersten 20 in eine Datei"
+
+**Schritt 2: Websites crawlen**
+Jetzt hast du 20 Namen. Aber was machen die genau?
+
+Sag mir: "Für jede Firma: lies deren Website und schreib in einem Satz was sie machen"
+
+Ich geh auf jede Website, lese sie, und schreib dir eine Zusammenfassung.
+
+**Schritt 3: ICP Check**
+Jetzt filtern: Passt die Firma zu uns?
+
+Sag mir: "Vergleich jede Firma mit unserem ICP: Bauen sie AI Agents? Haben sie was mit Mobile zu tun? Brauchen sie echte Geräte? Markier mit 🔥 Hot, ⚡ Warm, oder ❌ Raus"
 
 ok?
 
 ---
 
-## Message 5: Der wichtigste Trick
+## Message 5: Subagents — Turbo
 
-Das hier verändert alles:
+Wenn du 50+ Firmen checken willst, dauert das alleine ewig. Lösung:
 
-**Sag mir nicht WAS du willst. Sag mir WIE ich es finden soll.**
+Sag: "Mach das in Subagents. Einer sucht YC Startups, einer a16z Portfolio, einer Crunchbase Funding."
 
-❌ Schlecht: "Gib mir Leads"
-✅ Gut: "Such auf ycombinator.com/companies nach AI Startups von 2025. Lies jede Website. Schreib Name, Website, was die machen, und ob die Mobile-Testing brauchen in eine Datei."
+3 Helfer arbeiten gleichzeitig. 3x schneller.
 
-Je genauer dein Auftrag, desto besser mein Ergebnis. Wie bei einem Praktikanten — klare Anweisungen = gute Arbeit.
-
-ok?
-
----
-
-## Message 6: Cron Jobs — Dein Autopilot
-
-Das ist der Game Changer. Cron Jobs sind automatische Aufgaben die ich regelmäßig mache. Ohne dass du was tust.
-
-**Wie du einen einrichtest:**
-Sag einfach: "Mach einen Cron Job: Jeden Morgen um 9 Uhr such nach neuen AI Startups auf ProductHunt und schreib neue Leads in leads.md"
-
-**Was gut als Cron funktioniert:**
-- Jeden Morgen: Neue Funding-Runden checken
-- Jeden Tag: ProductHunt + HackerNews auf neue AI Tools scannen
-- Jede Woche: Lead-Liste updaten, tote Links rauswerfen
-- Jeden Montag: Zusammenfassung was letzte Woche passiert ist
-
-**Regeln für Cron Jobs:**
-- Mindestens **30 Minuten Abstand** zwischen Jobs
-- Nicht mehr als **3-4 aktive** gleichzeitig
-- Cron Jobs kosten Geld (Token-Verbrauch) — weniger ist mehr
-- Wenn ein Cron Job schlechte Ergebnisse liefert → anpassen oder löschen
-
-**Typische Fehler:**
-- 10 Cron Jobs gleichzeitig → überlappen sich, fressen Budget
-- Cron Job der jeden Tag 100 Websites crawlt → teuer, langsam
-- Cron Job ohne klare Anweisung → liefert Müll
-
-ok?
-
----
-
-## Message 7: Subagents — Turbo-Modus
-
-Wenn eine Aufgabe groß ist, kann ich mir Helfer holen. Die heißen Subagents.
-
-**Beispiel:** Du sagst "Such mir 50 AI Startups"
-
-Ohne Subagents: Ich suche alleine → dauert 20 Minuten
-
-Mit Subagents: 
-- Agent 1 sucht YC Startups
-- Agent 2 sucht GitHub AI Repos
-- Agent 3 sucht Crunchbase Funding
-- Alle fertig → ich merge die Ergebnisse
-
-3x schneller. Gleiche Qualität.
-
-**Wie du es aktivierst:**
-Sag: "Mach das in Subagents" oder "Parallelisier das"
-
-**Wann Subagents Sinn machen:**
-- Mehr als 20 Items recherchieren
-- Verschiedene Quellen gleichzeitig checken
+**Wann Subagents nutzen:**
+- Mehr als 20 Items
+- Verschiedene Quellen
 - Zeitdruck
 
-**Wann NICHT:**
-- Kleine Aufgaben (Overhead lohnt sich nicht)
-- Aufgaben die aufeinander aufbauen (erst A, dann B)
+**Wann nicht:**
+- Kleine Aufgabe
+- Tasks die aufeinander aufbauen
 
 ok?
 
 ---
 
-## Message 8: Memory — Mein Gedächtnis
+## Message 6: Cron Jobs — Autopilot
 
-Ohne Memory bin ich ein Goldfisch. Mit Memory bin ich dein langfristiger Partner.
+Das ist der beste Trick. Aufgaben die sich automatisch wiederholen.
 
-**So funktioniert's:**
-- Du sagst: "Speicher: QualGent ist unser heißester Lead, Gründer heißt X"
-- Ich schreib das in eine Memory-Datei
-- Nächste Session les ich die Datei und weiß es wieder
+**Beispiele:**
 
-**Was du speichern solltest:**
-- Entscheidungen ("Wir fokussieren uns auf YC Startups")
-- Lead-Status ("QualGent: Email geschickt am 28.3.")
-- Kontakte ("CTO von Drizz heißt Y, LinkedIn: ...")
-- Learnings ("Crunchbase zeigt uns nicht alles, besser Apollo nutzen")
+"Mach einen Cron Job: Jeden Morgen um 8 Uhr such auf ProductHunt nach neuen AI Tools und schreib neue Leads in leads.md"
 
-**Was passiert wenn du NICHT speicherst:**
-- Nächste Session frag ich: "Wer sind unsere Leads nochmal?"
-- Du bist genervt, ich bin ahnungslos
-- Alles nochmal von vorn
+"Mach einen Cron Job: Jeden Montag check ob es neue Funding-Runden bei AI Startups gab"
 
-**Regel:** Wenn was wichtig ist → "Speicher das." Immer.
+"Mach einen Cron Job: Jeden Tag um 18 Uhr schick mir eine Zusammenfassung was heute passiert ist"
+
+**Regeln:**
+- Max 3-4 aktive Cron Jobs
+- Mindestens 30 Min Abstand
+- Kostet Geld (Tokens) — weniger ist mehr
+- Wenn Ergebnis Müll → anpassen oder löschen
+
+**Probier's:** Sag mir einen Cron Job den du haben willst. Egal was. Einfach zum Testen.
+
+---
+
+## Message 7: Üben mit deiner echten Arbeit
+
+Du arbeitest in der Baubranche. Perfekt zum Üben. Hier Ideen was du JETZT testen kannst:
+
+**Status Reports:**
+"Schreib mir einen Status Report Template für mein Bauprojekt. Felder: Projekt, Datum, Was erledigt, Was offen, Blocker, Nächste Schritte"
+
+**Email Drafts:**
+"Schreib eine Email an meinen Kunden: Projekt X verzögert sich um 2 Wochen wegen Materialmangel. Professionell, kurz, Lösung vorschlagen."
+
+**Listen & Tracking:**
+"Erstell mir eine Datei: offene Aufgaben Baustelle XY. Tabelle mit Aufgabe, Zuständig, Frist, Status."
+
+**Cron Job für deine Arbeit:**
+"Jeden Freitag um 16 Uhr: Erinnere mich einen Wochenreport zu schreiben und gib mir ein Template."
+
+**Warum das wichtig ist:** Du lernst meinen Agent am besten kennen wenn du ihn für ECHTE Aufgaben nutzt. Nicht nur für Mobilerun. Je mehr du mit mir arbeitest, desto besser wirst du.
 
 ok?
 
 ---
 
-## Message 9: Tools die du daneben brauchst
+## Message 8: Der Cycle — So arbeitest du täglich
 
-Ich allein reiche für den Start. Aber wenn du skalieren willst, brauchst du ein paar externe Tools. Alle kostenlos oder billig:
+So sieht dein Tag aus wenn alles läuft:
 
-**Für Emails finden:**
-→ **Hunter.io** (hunter.io) — 25 gratis Suchen/Monat. Zeigt Email-Muster einer Firma. Ich kann die Website für dich aufrufen.
+**Morgens (automatisch):**
+- Cron Job hat neue Leads gesucht
+- Cron Job hat Funding-Runden gecheckt
+- Du bekommst eine Summary
 
-**Für Daten über Firmen:**
-→ **Apollo.io** (apollo.io) — Gratis-Account. Größte B2B Datenbank. Emails + LinkedIn + Firmendaten. Brauchst du einen Account, ich kann dir nicht einloggen.
+**Wenn du 30 Min Zeit hast:**
+- "Zeig mir die neuen Leads"
+- "Die sehen gut aus. Für die Top 5: lies deren Website und sag mir warum die Mobilerun brauchen"
+- "Schreib mir für die besten 3 einen personalisierten Einzeiler"
+- Du schickst manuell per Email/LinkedIn
 
-**Für Cold Emails:**
-→ **Instantly.ai** (instantly.ai) — 30€/Monat. Wärmt deine Email auf, rotiert Absender, tracked Öffnungsraten. Ohne sowas landen deine Mails im Spam.
+**Einmal pro Woche:**
+- "Status: Wie viele Leads haben wir? Wie viele kontaktiert? Was ist offen?"
+- Du reviewst, ich update die Liste
 
-**Für Tracking:**
-→ **Notion** (notion.so) — Gratis. Datenbank für deine Leads. Ich kann sogar direkt reinschreiben wenn du die API einrichtest.
-
-**Zusammen:** ~30€/Monat für einen kompletten Lead-Gen-Stack.
-
-ok?
-
----
-
-## Message 10: Die häufigsten Fehler
-
-Was schiefgeht wenn du mit mir arbeitest:
-
-**1. "Gib mir 50 Leads" als One-Shot**
-→ Die ersten 10 sind okay, die letzten 20 sind Müll. Besser: 10 Leads → du reviewst → Feedback → nächste 10.
-
-**2. "Er hat mir Fake-Firmen gegeben"**
-→ Passiert wenn ich aus dem Kopf antworte. Fix: "Nutze Web Search. Verifizier dass die Website existiert."
-
-**3. "LinkedIn-Links stimmen nicht"**
-→ Ich rate URLs statt sie zu checken. Fix: "Keine LinkedIn-URLs raten. Nur was du verifiziert hast."
-
-**4. Chat wird zu lang, Agent vergisst alles**
-→ Ergebnisse immer in Dateien. Nicht im Chat lassen. "Schreib das in leads.md"
-
-**5. Cron Job liefert Müll**
-→ Anweisung war zu vage. Präzisier den Job oder lösch ihn.
-
-**6. Agent macht was nach außen ohne zu fragen**
-→ Sollte nicht passieren. Wenn doch: sag sofort "Stopp". Und sag "Du fragst IMMER bevor du nach außen kommunizierst."
+**Das ist der Cycle:** Finden → Bewerten → Personalisieren → Kontaktieren → Follow Up → Repeat.
 
 ok?
 
 ---
 
-## Message 11: Dein erster Workflow
+## Message 9: Wenn was nicht klappt
 
-Lass uns jetzt zusammen starten. Ich zeig dir den kompletten Ablauf einmal durch.
+Fehler passieren. So gehst du damit um:
 
-Sag mir:
-1. **Welche Art Firma** suchst du? (z.B. "AI Startups die Mobile-Testing brauchen")
-2. **Wie viele** willst du zum Start? (Empfehlung: 10 zum Testen)
-3. **Welche Info pro Lead?** (z.B. Name, Website, was die machen, warum relevant)
+**Ich geb dir Fake-Infos:**
+→ Sag: "Verifizier das. Nutze Web Search. Nichts aus dem Kopf."
 
-Dann leg ich los und du siehst live wie es funktioniert.
+**Website lässt sich nicht lesen:**
+→ Sag: "Versuch eine andere Quelle" oder "Google nach [Firmenname] + CEO"
 
-Was soll ich suchen?
+**Ich vergesse was du mir gesagt hast:**
+→ Sag: "Speicher das" bei wichtigen Sachen. Oder: "Was hast du in Memory über X?"
+
+**Cron Job liefert Müll:**
+→ Anweisung präziser machen oder löschen
+
+**Du kommst nicht weiter:**
+→ **Frag in der Gruppe.** Dafür ist sie da. Chris und die anderen Agents können helfen. Keine dummen Fragen — nur dumm ist nicht zu fragen.
+
+ok?
 
 ---
 
-## Message 12: Quick Reference
+## Message 10: Los geht's
 
-Für später — das sind deine wichtigsten Befehle:
+Du hast jetzt alles was du brauchst. Zusammenfassung:
 
-| Du sagst | Was passiert |
-|----------|-------------|
-| "Speicher das" | Ich merk mir's für nächste Session |
-| "Web Search nutzen" | Ich google statt zu raten |
-| "In Datei schreiben" | Ergebnis wird gespeichert |
-| "Subagents nutzen" | Parallele Recherche, 3x schneller |
-| "Cron Job: jeden Tag um 9..." | Automatische tägliche Aufgabe |
-| "Verifizier das" | Ich check ob Infos stimmen |
-| "Weniger Text" | Kürzere Antworten |
-| "Zeig mir was du hast" | Zwischenstand |
-| "Stopp" | Sofort aufhören |
-| "Was weißt du über X?" | Sucht in Memory |
+1. **Klare Aufträge** → gute Ergebnisse
+2. **"Speicher das"** → ich merke mir's
+3. **"Web Search nutzen"** → keine Fake-Daten
+4. **"Subagents nutzen"** → Turbo für große Aufgaben
+5. **Cron Jobs** → automatischer Autopilot
+6. **Üb mit deiner echten Arbeit** → so lernst du am schnellsten
+7. **Frag in der Gruppe** wenn du nicht weiterkommst
 
-**Du bist ready.** Lass uns loslegen. Was ist dein erster Auftrag?
+**Dein nächster Schritt:** Gib mir einen echten Auftrag. Egal ob für Mobilerun oder deine Arbeit. Einfach loslegen.
+
+Was soll ich für dich machen?
