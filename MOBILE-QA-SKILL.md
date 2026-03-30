@@ -1,33 +1,33 @@
 ---
 name: mobile-qa
-description: Mobile QA Testing mit echten Geräten via Mobilerun API. Nutze wenn du eine Website oder App auf einem echten Android/iOS Gerät testen willst. Iterativer Cycle - Screenshot → Analyse → Fix → Verify. Für responsive Design, Mobile UX und visuelles Testing.
+description: Mobile QA testing on real devices via Mobilerun API. Use when you need to test a website or app on a real Android/iOS phone. Iterative cycle - screenshot → analyze → fix → verify. For responsive design, mobile UX, and visual testing.
 ---
 
-# Mobile QA mit Mobilerun
+# Mobile QA with Mobilerun
 
-Automatisiertes Mobile QA Testing auf echten Geräten. Kein Emulator, keine DevTools — echtes Handy, echte Screenshots.
+Automated mobile QA testing on real physical devices. No emulator, no DevTools — real phone, real screenshots.
 
 ## Setup
 
 ### Credentials
 ```bash
-# API Key und Device ID müssen vorhanden sein
+# API key and device ID must be configured
 cat ~/.config/droidrun/config.json
 # {"api_key": "dr_sk_...", "device_id": "..."}
 ```
 
-### Device prüfen
+### Check device status
 ```bash
 API_KEY=$(python3 -c "import json;print(json.load(open('$HOME/.config/droidrun/config.json'))['api_key'])")
 curl -s "https://api.mobilerun.ai/v1/devices" -H "Authorization: Bearer $API_KEY"
-# State muss "ready" sein
+# State must be "ready"
 ```
 
-## API Referenz
+## API Reference
 
-### Task erstellen
+### Create task
 ```bash
-# WICHTIG: Kein llmModel angeben — API wählt automatisch
+# IMPORTANT: Do NOT specify llmModel — API auto-selects an available model
 curl -s -X POST "https://api.mobilerun.ai/v1/tasks" \
   -H "Authorization: Bearer $API_KEY" \
   -H "Content-Type: application/json" \
@@ -38,120 +38,116 @@ curl -s -X POST "https://api.mobilerun.ai/v1/tasks" \
 # Response: {"id": "TASK_ID", "streamUrl": "wss://..."}
 ```
 
-### Task Status pollen
+### Poll task status
 ```bash
 curl -s "https://api.mobilerun.ai/v1/tasks/$TASK_ID" \
   -H "Authorization: Bearer $API_KEY"
-# task.succeeded: true/false/null (null = noch am laufen)
+# task.succeeded: true/false/null (null = still running)
 ```
 
-### Screenshots holen (Zwei Schritte!)
+### Get screenshots (two steps!)
 ```bash
-# Schritt 1: Signed URL holen
+# Step 1: Get signed URL
 SIGNED_URL=$(curl -s "https://api.mobilerun.ai/v1/tasks/$TASK_ID/screenshots/$INDEX" \
   -H "Authorization: Bearer $API_KEY" | python3 -c "import json,sys;print(json.load(sys.stdin)['url'])")
 
-# Schritt 2: Bild downloaden
+# Step 2: Download actual image
 curl -sL "$SIGNED_URL" -o screenshot.png
 ```
 
-### Alle Screenshots eines Tasks
+### Get all screenshots from a task
 ```bash
-# Screenshot-Indices aus Trajectory extrahieren
+# Extract screenshot indices from trajectory
 curl -s "https://api.mobilerun.ai/v1/tasks/$TASK_ID" -H "Authorization: Bearer $API_KEY" | \
   python3 -c "import json,sys;[print(ev['data']['index']) for ev in json.load(sys.stdin)['task']['trajectory'] if ev['event']=='ScreenshotEvent']"
 ```
 
 ## QA Workflow
 
-### Der Cycle: Screenshot → Analyse → Fix → Verify
+### The Cycle: Screenshot → Analyze → Fix → Verify
 
 ```
 ┌─────────────┐
-│ 1. Screenshot│──→ Task an Gerät: "Öffne URL, scrolle durch"
+│ 1. Screenshot│──→ Send task to device: "Open URL, scroll through"
 └──────┬──────┘
        ▼
 ┌─────────────┐
-│ 2. Download  │──→ Screenshots von allen Sections holen
+│ 2. Download  │──→ Grab screenshots from all sections
 └──────┬──────┘
        ▼
 ┌─────────────┐
-│ 3. Analyse   │──→ Screenshots analysieren: Layout, Overflow, Touch Targets
+│ 3. Analyze   │──→ Check screenshots: layout, overflow, touch targets
 └──────┬──────┘
        ▼
 ┌─────────────┐
-│ 4. Fix       │──→ CSS/HTML anpassen
+│ 4. Fix       │──→ Update CSS/HTML
 └──────┬──────┘
        ▼
 ┌─────────────┐
-│ 5. Reload    │──→ nginx/Server reloaden
+│ 5. Reload    │──→ Reload server (nginx/dev server)
 └──────┬──────┘
        ▼
 ┌─────────────┐
-│ 6. Verify    │──→ Neuer Screenshot, prüfen ob Fix wirkt
+│ 6. Verify    │──→ New screenshot, confirm fix works
 └──────┬──────┘
        ▼
-    Repeat bis alles passt (min. 3 Cycles)
+    Repeat until clean (min. 3 cycles)
 ```
 
-### Cycle 1: Voller Page Scroll
+### Cycle 1: Full page scroll
 ```bash
-# Seite öffnen und komplett durchscrollen
 TASK="Open Chrome and navigate to $URL. Wait for full load. Then scroll down slowly through the entire page from top to bottom."
-
-# → Screenshots analysieren für: Überlappungen, Overflow, kaputte Grids, unleserlichen Text
+# → Analyze screenshots for: overlapping elements, overflow, broken grids, unreadable text
 ```
 
-### Cycle 2: Gezielte Sections
+### Cycle 2: Targeted sections
 ```bash
-# Spezifische Problem-Sections checken
 TASK="Scroll to the section with the comparison table. Take a screenshot. Then scroll to the footer and take a screenshot."
 ```
 
-### Cycle 3: Interaktions-Test
+### Cycle 3: Interaction testing
 ```bash
-# Buttons, Navigation, Dropdowns testen
 TASK="Tap the hamburger menu icon in the top right. Take a screenshot of the open menu. Then close it and scroll to a section with buttons."
 ```
 
-## Mobile QA Checkliste
+## Mobile QA Checklist
 
 ### Layout
-- [ ] Kein horizontaler Overflow (kein seitliches Scrollen)
-- [ ] Grids stacken auf Mobile (1-spaltig statt 3-spaltig)
-- [ ] Cards haben volle Breite
-- [ ] Tabellen haben horizontal-scroll oder passen sich an
-- [ ] Bilder/Videos behalten Aspect Ratio
-- [ ] Kein Content wird abgeschnitten
+- [ ] No horizontal overflow (no sideways scrolling)
+- [ ] Grids stack on mobile (single column instead of multi-column)
+- [ ] Cards take full width
+- [ ] Tables have horizontal scroll or adapt
+- [ ] Images/videos maintain aspect ratio
+- [ ] No content gets clipped
 
 ### Navigation
-- [ ] Hamburger Menu funktioniert
-- [ ] Sticky/Fixed Bars überlappen NICHT den Content
-- [ ] Alle Links sind tappbar (min. 44x44px Touch Target)
-- [ ] Navigation schließt nach Tap
+- [ ] Hamburger menu works
+- [ ] Sticky/fixed bars do NOT overlap content
+- [ ] All links are tappable (min. 44x44px touch target)
+- [ ] Navigation closes after tap
 
 ### Text
-- [ ] Alle Headlines lesbar (min. 20px auf Mobile)
-- [ ] Body Text min. 14px
-- [ ] Ausreichend Kontrast
-- [ ] Kein Text wird abgeschnitten oder überlappt
-- [ ] Code-Blöcke brechen nicht aus dem Viewport
+- [ ] All headlines readable (min. 20px on mobile)
+- [ ] Body text min. 14px
+- [ ] Sufficient contrast
+- [ ] No text gets clipped or overlaps
+- [ ] Code blocks don't break out of viewport
 
-### Interaktion
-- [ ] Buttons haben genug Padding für Finger-Tap
-- [ ] Formulare sind benutzbar
-- [ ] Dropdowns/Accordions funktionieren
-- [ ] Scroll-Animationen flüssig
+### Interaction
+- [ ] Buttons have enough padding for finger tap
+- [ ] Forms are usable
+- [ ] Dropdowns/accordions work
+- [ ] Scroll animations are smooth
 
-### Typische Mobile-Bugs
-- [ ] `position:fixed` Elemente überlappen nicht
-- [ ] `overflow:hidden` auf Carousel-Containern
-- [ ] `max-width:100vw` auf äußeren Containern
-- [ ] `grid-template-columns:1fr` im Media Query
-- [ ] ASCII Art / Monospace-Blöcke hidden auf Mobile
-- [ ] Testimonial-Karussells begrenzt auf Viewport-Breite
+### Common mobile bugs to check
+- [ ] `position:fixed` elements don't overlap
+- [ ] `overflow:hidden` on carousel containers
+- [ ] `max-width:100vw` on outer containers
+- [ ] `grid-template-columns:1fr` in media queries
+- [ ] ASCII art / monospace blocks hidden on mobile
+- [ ] Testimonial carousels capped at viewport width
 
-## Beispiel: Kompletter QA Run
+## Example: Complete QA run
 
 ```bash
 #!/bin/bash
@@ -161,7 +157,7 @@ URL="https://example.com"
 OUTPUT_DIR="./mobile-qa-$(date +%Y%m%d-%H%M)"
 mkdir -p "$OUTPUT_DIR"
 
-# Task erstellen
+# Create task
 TASK_ID=$(curl -s -X POST "https://api.mobilerun.ai/v1/tasks" \
   -H "Authorization: Bearer $API_KEY" \
   -H "Content-Type: application/json" \
@@ -170,7 +166,7 @@ TASK_ID=$(curl -s -X POST "https://api.mobilerun.ai/v1/tasks" \
 
 echo "Task: $TASK_ID"
 
-# Pollen bis fertig
+# Poll until done
 while true; do
   sleep 10
   SUCCEEDED=$(curl -s "https://api.mobilerun.ai/v1/tasks/$TASK_ID" \
@@ -180,7 +176,7 @@ while true; do
   [ "$SUCCEEDED" = "True" ] || [ "$SUCCEEDED" = "False" ] && break
 done
 
-# Screenshots holen
+# Download screenshots
 INDICES=$(curl -s "https://api.mobilerun.ai/v1/tasks/$TASK_ID" \
   -H "Authorization: Bearer $API_KEY" \
   | python3 -c "import json,sys;[print(ev['data']['index']) for ev in json.load(sys.stdin)['task']['trajectory'] if ev['event']=='ScreenshotEvent']")
@@ -196,12 +192,12 @@ done
 echo "Done. Screenshots in $OUTPUT_DIR/"
 ```
 
-## Bekannte Gotchas
+## Known gotchas
 
-- `llmModel` NICHT angeben — API wählt automatisch ein verfügbares Model
-- Screenshots sind **zwei Schritte**: erst signed URL, dann Download
-- `api.mobilerun.ai` nutzen, nicht `api.droidrun.ai`
-- Device muss `state: ready` sein
-- Tasks dauern 20-90 Sekunden je nach Komplexität
-- Chrome auf dem Gerät zeigt manchmal Translate-Bar — ignorieren
-- Gerät behält Browser-State zwischen Tasks — "Reload" statt "Open" nutzen wenn Seite schon offen
+- Do NOT specify `llmModel` — API auto-selects an available model
+- Screenshots are **two steps**: get signed URL first, then download
+- Use `api.mobilerun.ai`, not `api.droidrun.ai`
+- Device must be in `state: ready`
+- Tasks take 20-90 seconds depending on complexity
+- Chrome on device sometimes shows translate bar — ignore it
+- Device keeps browser state between tasks — use "Reload" instead of "Open" if page is already loaded
