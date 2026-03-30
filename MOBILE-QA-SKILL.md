@@ -9,19 +9,45 @@ Automated mobile QA testing on real physical devices. No emulator, no DevTools �
 
 ## Setup
 
-### Credentials
+### 1. Get a Mobilerun account
+- Go to https://cloud.mobilerun.ai and sign up
+- Get your API key from the dashboard
+
+### 2. Connect a device
+You need a real Android phone running the Droidrun Portal app.
+
+- Install **Droidrun Portal** on the phone: https://mobilerun.ai/portal
+- Open the app and tap "Connect"
+- The device appears in your Mobilerun dashboard
+- Copy the **Device ID** from the dashboard
+
+Alternatively, use a cloud-hosted device from Mobilerun (no physical phone needed).
+
+### 3. Store credentials locally
 ```bash
-# API key and device ID must be configured
-cat ~/.config/droidrun/config.json
-# {"api_key": "dr_sk_...", "device_id": "..."}
+mkdir -p ~/.config/droidrun
+cat > ~/.config/droidrun/config.json << 'EOF'
+{
+  "api_key": "dr_sk_YOUR_API_KEY_HERE",
+  "device_id": "YOUR_DEVICE_UUID_HERE"
+}
+EOF
+chmod 600 ~/.config/droidrun/config.json
 ```
 
-### Check device status
+### 4. Verify connection
 ```bash
 API_KEY=$(python3 -c "import json;print(json.load(open('$HOME/.config/droidrun/config.json'))['api_key'])")
 curl -s "https://api.mobilerun.ai/v1/devices" -H "Authorization: Bearer $API_KEY"
-# State must be "ready"
+# Device state must be "ready" before you can send tasks
 ```
+
+### 5. Make your website accessible to the phone
+The phone needs to reach your website. Options:
+- **Public URL** — if already deployed, just use the URL
+- **Cloudflare Tunnel** — `cloudflared tunnel --url http://localhost:PORT` gives you a public URL for free
+- **ngrok** — `ngrok http PORT` same idea
+- The phone is on the internet, it can't reach `localhost` on your machine
 
 ## API Reference
 
